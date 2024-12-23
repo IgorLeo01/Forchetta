@@ -26,7 +26,7 @@
       closeMenu() {
         this.$emit('close-menu');
       },
-    },
+    },  
   };
   </script>
   
