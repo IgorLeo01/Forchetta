@@ -3,57 +3,45 @@
     <nav
       class="w-full flex items-center justify-between px-10 py-4 bg-secondary z-50"
     >
-      <div class="text-xl font-baskervville italic">Forchetta</div>
-
-      <ul class="flex gap-10 text-base">
-        <li><a href="#" class="hover:text-primary">Home</a></li>
-        <li><a href="#" class="hover:text-primary">Sobre</a></li>
-        <li><a href="#" class="hover:text-primary">Cardápio</a></li>
-        <li><a href="#" class="hover:text-primary">Contato</a></li>
+      <div class="relative flex items-center">
+        <img
+          src="../assets/LogoForchetta.png"
+          alt="Logo Forchetta"
+          class="absolute logo-position"
+        />
+        <span class="text-xl font-baskervville italic text-white"
+          >Forchetta</span
+        >
+      </div>
+      <ul class="hidden md:flex gap-10 text-base">
+        <li><a href="#" class="hover:text-primary text-white">Inicio</a></li>
+        <li><a href="#" class="hover:text-primary text-white">Sobre</a></li>
+        <li><a href="#" class="hover:text-primary text-white">Cardápio</a></li>
+        <li><a href="#" class="hover:text-primary text-white">Contato</a></li>
       </ul>
 
-      <div class="flex items-center gap-4 relative">
-        <a href="#" class="text-primary font-prompt uppercase text-sm">
-          Reservar
-        </a>
-        <div
-          class="absolute right-12 top-0 h-10 w-px bg-gray-400 opacity-20"
-        ></div>
-        <button @click="toggleMenu" class="text-primary focus:outline-none">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            class="w-8 h-8"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M4 6h16M4 12h16M4 18h16"
-            />
-          </svg>
-        </button>
-      </div>
-    </nav>
-    <div
-      class="absolute left-0 w-full h-px bg-gray-400 opacity-20"
-      style="top: 80px"
+      <a
+        href="#"
+        class="hidden md:block text-primary font-prompt uppercase text-sm mr-4"
       >
-    </div>
+        Reservar
+      </a>
+      <button @click="toggleMenu" class="block md:hidden focus:outline-none">
+        <img src="../assets/Hamburguer.png" alt="Menu" class="w-6 h-6" />
+      </button>
+    </nav>
 
-    <HamburgerMenu :isMenuOpen="isMenuOpen" @close-menu="toggleMenu" />
+    <HamburguerMenu :isMenuOpen="isMenuOpen" @close-menu="toggleMenu" />
   </div>
 </template>
 
 <script>
-import HamburgerMenu from "./HamburgerMenu.vue";
+import HamburguerMenu from "./HamburguerMenu.vue";
 
 export default {
   name: "Navbar",
   components: {
-    HamburgerMenu,
+    HamburguerMenu,
   },
   data() {
     return {
@@ -62,7 +50,6 @@ export default {
   },
   methods: {
     toggleMenu() {
-      console.log("Menu toggled");
       this.isMenuOpen = !this.isMenuOpen;
     },
   },
@@ -74,7 +61,59 @@ export default {
   color: #ff9900;
 }
 
-.bg-gray-400 {
-  background-color: rgba(217, 217, 217, 0.2);
+a.text-primary {
+  font-family: "Prompt", sans-serif;
+  text-transform: uppercase;
+  font-size: 0.875rem;
+  padding: 5px 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+a.text-primary:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.text-white {
+  color: #ffffff;
+}
+
+.logo-position {
+  width: 100px;
+  position: absolute;
+  max-width: none;
+  max-height: none;
+  left: 0;
+  bottom: -3px;
+}
+
+
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #051114;
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+ul {
+  display: flex;
+  gap: 10px;
+}
+
+@media (max-width: 768px) {
+  ul {
+    display: none;
+  }
+
+  .vertical-bar {
+    display: none;
+  }
+
+  button {
+    display: block;
+  }
 }
 </style>

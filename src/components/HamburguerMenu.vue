@@ -1,41 +1,70 @@
 <template>
-    <div v-if="isMenuOpen" class="fixed top-0 right-0 w-64 h-full bg-secondary shadow-lg z-50 flex flex-col p-6 text-white">
-      <button @click="closeMenu" class="mb-4 self-end text-gray-400 hover:text-primary focus:outline-none">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-        </svg>
-      </button>
-      <a href="#" class="hover:text-primary mb-4">Home</a>
-      <a href="#" class="hover:text-primary mb-4">Sobre</a>
-      <a href="#" class="hover:text-primary mb-4">Cardápio</a>
-      <a href="#" class="hover:text-primary mb-4">Contato</a>
-      <a href="#" class="text-primary font-prompt uppercase mt-auto">Reservar</a>
-    </div>
-  </template>
-  
-  <script>
-  export default {
-    name: 'HamburgerMenu',
-    props: {
-      isMenuOpen: {
-        type: Boolean,
-        required: true,
-      },
+  <div :class="['sidebar', { open: isMenuOpen }]">
+    <button @click="closeMenu" class="close-button">
+      ✕
+    </button>
+    <a href="#">Inicio</a>
+    <a href="#">Sobre</a>
+    <a href="#">Cardápio</a>
+    <a href="#">Contato</a>
+  </div>
+</template>
+
+<script>
+export default {
+  name: "HamburguerMenu",
+  props: {
+    isMenuOpen: {
+      type: Boolean,
+      required: true,
     },
-    methods: {
-      closeMenu() {
-        this.$emit('close-menu');
-      },
-    },  
-  };
-  </script>
-  
-  <style scoped>
-  .bg-secondary {
-    background-color: #051114;
-  }
-  .text-primary {
-    color: #ff9900;
-  }
-  </style>
-  
+  },
+  methods: {
+    closeMenu() {
+      this.$emit("close-menu");
+    },
+  },
+};
+</script>
+
+
+<style>
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: 0; 
+  width: 250px;
+  height: 100%;
+  background-color: #051114;
+  z-index: 2000;
+  padding: 20px;
+  transform: translateX(100%); 
+  transition: transform 0.3s ease-in-out;
+}
+
+.sidebar.open {
+  transform: translateX(0); /* Mostra o sidebar */
+}
+
+.sidebar a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 1rem;
+  display: block;
+  margin-bottom: 15px;
+}
+
+.sidebar a:hover {
+  color: #ff9900;
+}
+
+button {
+  background: none;
+  border: none;
+  color: #ff9900;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+</style>
