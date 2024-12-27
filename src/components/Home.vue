@@ -84,6 +84,73 @@
           @click="moveCarousel(1)"
         />
       </div>
+      <div class="nossa-especialidade relative mt-20">
+        <div class="text-container flex flex-col items-start">
+          <h2 class="text-primary font-baskervville text-5xl mb-4">
+            Nossa Especialidade
+          </h2>
+          <p class="description">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
+            euismod posuere nisl, id tristique libero mattis et. Vivamus orci
+            risus, facilisis at felis non, luctus maximus justo. Orci varius
+          </p>
+          <img
+            src="../assets/Tagliatelle-al-ragu2.png"
+            alt="Prato menor"
+            class="prato-image-left mt-6"
+          />
+        </div>
+        <div class="image-right-container">
+          <img
+            src="../assets/Tagliatelle-al-ragu.png"
+            alt="Prato maior"
+            class="prato-image-right"
+          />
+        </div>
+        <div class="stars-container mt-10">
+          <img src="../assets/Stars.png" alt="Estrelas" class="stars" />
+        </div>
+        <div
+          class="critica-section relative py-20"
+          style="text-align: left; margin-left: 100px"
+        >
+          <h2 class="text-primary text-5xl font-baskervville mb-12">
+            Exemplo de Crítica
+          </h2>
+          <div class="flex items-start gap-4 px-4">
+            <img
+              src="../assets/quote-left.png"
+              alt="Aspas Esquerda"
+              class="w-10 h-10"
+            />
+            <div class="max-w-3xl">
+              <p class="italic text-lg leading-relaxed">
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
+                euismod posuere nisl, id tristique libero mattis et. Vivamus
+                orci risus, facilisis at felis non, luctus maximus justo."
+              </p>
+              <p class="mt-4 text-sm text-gray-400">— Nome do Crítico</p>
+            </div>
+            <img
+              src="../assets/quote-right.png"
+              alt="Aspas Direita"
+              class="w-10 h-10"
+            />
+          </div>
+          <div class="flex mt-10">
+            <button
+              class="w-10 h-10 bg-primary text-secondary rounded-full flex items-center justify-center mr-4 hover:opacity-80"
+            >
+              <img src="../assets/arrowLeft.png" alt="Seta Esquerda" />
+            </button>
+            <button
+              class="w-10 h-10 bg-primary text-secondary rounded-full flex items-center justify-center hover:opacity-80"
+            >
+              <img src="../assets/arrowRight.png" alt="Seta Direita" />
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -92,7 +159,9 @@
 import arrowLeft from "../assets/arrowLeft.png";
 import arrowRight from "../assets/arrowRight.png";
 import arrowMenuLeft from "../assets/ArrowMenuLeft.png";
-import arrowMenuRight from "../assets/ArrowMenuRight.png"
+import arrowMenuRight from "../assets/ArrowMenuRight.png";
+import Tagliatelle1 from "../assets/Tagliatelle-al-ragu.png";
+import Tagliatelle2 from "../assets/Tagliatelle-al-ragu2.png";
 
 export default {
   name: "Home",
@@ -102,6 +171,8 @@ export default {
       arrowRight,
       arrowMenuLeft,
       arrowMenuRight,
+      Tagliatelle2,
+      Tagliatelle1,
       currentIndex: 2,
       carouselItems: [
         {
@@ -226,7 +297,7 @@ export default {
 }
 
 .carousel::-webkit-scrollbar {
-  display: none; 
+  display: none;
 }
 
 .carousel-item {
@@ -253,7 +324,7 @@ export default {
 
 .carousel-item:hover {
   transform: scale(1);
-  opacity: 1; 
+  opacity: 1;
 }
 
 .card-content {
@@ -295,6 +366,140 @@ export default {
 
 .circle.active {
   background-color: #ffa000;
+}
+
+.nossa-especialidade {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  margin: 0 auto;
+  padding: 20px;
+  max-width: 1200px;
+  margin-top: 200px;
+  left: 70px;
+}
+
+.content-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.text-container {
+  flex: 1;
+  max-width: 50%;
+  padding-right: 20px;
+}
+
+.text-container h2 {
+  font-family: "Baskervville", serif;
+  font-size: 60px;
+  line-height: 115%;
+  color: #ffa000;
+  max-width: 400px;
+}
+
+.description {
+  font-family: "Prompt", sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  color: #c8c8c8;
+  margin-bottom: 20px;
+  max-width: 400px;
+}
+
+.prato-image-left {
+  width: 400px;
+  height: auto;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.image-right-container {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  position: relative;
+  top: -500px;
+  right: 150px;
+}
+
+.prato-image-right {
+  width: 500px;
+  height: auto;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.stars-container {
+  display: flex;
+  justify-content: center;
+  margin-top: -250px;
+}
+
+.stars {
+  width: 20px;
+  height: auto;
+}
+
+@media (max-width: 768px) {
+  .nossa-especialidade {
+    flex-direction: column;
+    padding: 10px;
+    max-width: 100%;
+    margin-top: 50px;
+    margin-right: 80px;
+  }
+
+  .content-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .text-container {
+    max-width: 90%;
+    padding-right: 0;
+    margin-bottom: 20px;
+  }
+
+  .text-container h2 {
+    font-size: 36px;
+    line-height: 1.2;
+  }
+
+  .description {
+    font-size: 14px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+  }
+
+  .prato-image-left {
+    width: 100%;
+    height: auto;
+  }
+
+  .image-right-container {
+    position: static;
+    margin-top: 20px;
+    justify-content: center;
+  }
+
+  .prato-image-right {
+    width: 100%;
+    height: auto;
+  }
+
+  .stars-container {
+    margin-top: 10px;
+  }
+
+  .stars {
+    width: 15px;
+    height: auto;
+    margin-top: 60px;
+  }
 }
 
 button {
@@ -372,11 +577,29 @@ img {
   .text-primary {
     margin-right: 0;
     font-size: 0.8rem;
+    margin-left: 30;
   }
 
   .bg-primary {
     margin: 0 auto;
     width: 100%;
+    margin-top: 30px;
+  }
+
+  .critica-section {
+    background-color: #040d10;
+  }
+
+  .text-primary {
+    color: #ffa000;
+  }
+
+  button {
+    transition: transform 0.3s ease;
+  }
+
+  button:hover {
+    transform: scale(1.1);
   }
 }
 </style>
