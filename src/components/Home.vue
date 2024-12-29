@@ -110,45 +110,45 @@
         <div class="stars-container mt-10">
           <img src="../assets/Stars.png" alt="Estrelas" class="stars" />
         </div>
-        <div
-          class="critica-section relative py-20"
-          style="text-align: left; margin-left: 100px"
-        >
-          <h2 class="text-primary text-5xl font-baskervville mb-12">
-            Exemplo de Crítica
-          </h2>
-          <div class="flex items-start gap-4 px-4">
-            <img
-              src="../assets/quote-left.png"
-              alt="Aspas Esquerda"
-              class="w-10 h-10"
-            />
-            <div class="max-w-3xl">
-              <p class="italic text-lg leading-relaxed">
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
-                euismod posuere nisl, id tristique libero mattis et. Vivamus
-                orci risus, facilisis at felis non, luctus maximus justo."
-              </p>
-              <p class="mt-4 text-sm text-gray-400">— Nome do Crítico</p>
-            </div>
-            <img
-              src="../assets/quote-right.png"
-              alt="Aspas Direita"
-              class="w-10 h-10"
-            />
+      </div>
+      <div
+        class="critica-section relative py-20"
+        style="text-align: center; background-color: #05161a"
+      >
+        <h2 class="text-primary text-5xl font-baskervville mb-12">
+          Exemplo de Crítica
+        </h2>
+        <div class="flex items-start gap-4 px-4" style="justify-content: center;">
+          <img
+            src="../assets/quote-left.png"
+            alt="Aspas Esquerda"
+            class="w-10 h-10"
+          />
+          <div class="max-w-3xl">
+            <p class="italic text-lg leading-relaxed">
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
+              euismod posuere nisl, id tristique libero mattis et. Vivamus orci
+              risus, facilisis at felis non, luctus maximus justo."
+            </p>
+            <p class="mt-4 text-sm text-gray-400">— Nome do Crítico</p>
           </div>
-          <div class="flex mt-10">
-            <button
-              class="w-10 h-10 bg-primary text-secondary rounded-full flex items-center justify-center mr-4 hover:opacity-80"
-            >
-              <img src="../assets/arrowLeft.png" alt="Seta Esquerda" />
-            </button>
-            <button
-              class="w-10 h-10 bg-primary text-secondary rounded-full flex items-center justify-center hover:opacity-80"
-            >
-              <img src="../assets/arrowRight.png" alt="Seta Direita" />
-            </button>
-          </div>
+          <img
+            src="../assets/quote-right.png"
+            alt="Aspas Direita"
+            class="w-10 h-10"
+          />
+        </div>
+        <div class="flex mt-10" style="justify-content: center;">
+          <button
+            class="w-10 h-10 bg-primary text-secondary rounded-full flex items-center justify-center mr-4 hover:opacity-80"
+          >
+            <img src="../assets/arrowLeft.png" alt="Seta Esquerda" />
+          </button>
+          <button
+            class="w-10 h-10 bg-primary text-secondary rounded-full flex items-center justify-center hover:opacity-80"
+          >
+            <img src="../assets/arrowRight.png" alt="Seta Direita" />
+          </button>
         </div>
       </div>
     </div>
