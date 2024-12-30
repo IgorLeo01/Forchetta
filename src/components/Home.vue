@@ -18,7 +18,7 @@
           posuere nisl, id tristique libero mattis et. Vivamus orci risus...''
         </p>
         <button
-          class="mt-6 px-6 py-3 bg-primary text-secondary text-sm font-prompt rounded"
+          class="btn-primary mt-6 px-6 py-3 bg-primary text-secondary text-sm font-prompt rounded"
         >
           <span>Sobre Nós</span>
         </button>
@@ -115,15 +115,14 @@
         class="critica-section relative py-20"
         style="text-align: center; background-color: #05161a"
       >
-        <h2 class="text-primary text-5xl font-baskervville mb-12">
-          Exemplo de Crítica
+        <h2 class="text-primary text-3xl font-baskervville mb-12">
+          Comentários
         </h2>
-        <div class="flex items-start gap-4 px-4" style="justify-content: center;">
-          <img
-            src="../assets/quote-left.png"
-            alt="Aspas Esquerda"
-            class="w-10 h-10"
-          />
+        <div
+          class="flex items-start gap-4 px-4"
+          style="justify-content: center"
+        >
+          <img :src="aspasLeft" alt="Aspas Esquerda" class="w-10 h-10" />
           <div class="max-w-3xl">
             <p class="italic text-lg leading-relaxed">
               "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
@@ -132,27 +131,77 @@
             </p>
             <p class="mt-4 text-sm text-gray-400">— Nome do Crítico</p>
           </div>
-          <img
-            src="../assets/quote-right.png"
-            alt="Aspas Direita"
-            class="w-10 h-10"
-          />
+          <img :src="aspasRight" alt="Aspas Direita" class="w-10 h-10" />
         </div>
-        <div class="flex mt-10" style="justify-content: center;">
+        <div class="flex mt-10 justify-center gap-6">
           <button
-            class="w-10 h-10 bg-primary text-secondary rounded-full flex items-center justify-center mr-4 hover:opacity-80"
+            class="btn-critica btn-critica-left"
+            @click="goToPreviousCritica"
           >
-            <img src="../assets/arrowLeft.png" alt="Seta Esquerda" />
+            <img :src="arrowCriticaLeft" alt="Seta Esquerda" />
           </button>
           <button
-            class="w-10 h-10 bg-primary text-secondary rounded-full flex items-center justify-center hover:opacity-80"
+            class="btn-critica btn-critica-right"
+            @click="goToNextCritica"
           >
-            <img src="../assets/arrowRight.png" alt="Seta Direita" />
+            <img :src="arrowCriticaRight" alt="Seta Direita" />
           </button>
         </div>
       </div>
     </div>
   </div>
+  <footer class="relative bg-[#040d10] text-white py-8">
+    <div class="container mx-auto max-w-3xl">
+      <div class="flex justify-between items-center mb-4">
+        <p class="font-prompt text-base">laforchetta@laforchetta.com.br</p>
+        <div class="flex gap-6">
+          <a href="#" class="font-prompt text-sm uppercase hover:text-[#FFA000]"
+            >Início</a
+          >
+          <a href="#" class="font-prompt text-sm uppercase hover:text-[#FFA000]"
+            >Sobre</a
+          >
+          <a href="#" class="font-prompt text-sm uppercase hover:text-[#FFA000]"
+            >Cardápio</a
+          >
+          <a href="#" class="font-prompt text-sm uppercase hover:text-[#FFA000]"
+            >Contato</a
+          >
+        </div>
+      </div>
+      <div class="w-full h-px bg-[#FFA000] opacity-30"></div>
+      <div class="flex flex-col md:flex-row justify-between items-center mt-4">
+        <div
+          class="flex flex-col items-center md:items-start text-center md:text-left"
+        >
+          <p class="font-prompt text-sm text-primary">Telefone:</p>
+          <p class="font-prompt text-base">(11) 3237-0717</p>
+          <p class="font-prompt text-sm mt-2 text-primary">Endereço:</p>
+          <p class="font-prompt text-base">
+            Rua Santa Justina, 210 Vila Olimpia – São Paulo/SP
+          </p>
+        </div>
+        <div class="flex flex-col items-center mt-4 md:mt-0">
+          <p class="font-prompt text-base">Sábado - Domingo: 11:30h - 23:00h</p>
+          <p class="font-prompt text-base">Terça - Sexta: 13:30h - 00:00h</p>
+        </div>
+        <div class="mt-4 md:mt-0">
+          <button
+            class="footer-button bg-white text-[#040d10] font-prompt text-sm px-6 py-2 rounded-full border-none"
+          >
+            Reservar
+          </button>
+        </div>
+      </div>
+      <div class="w-full h-px bg-[#FFA000] opacity-30 mt-6"></div>
+    </div>
+    <img
+      :src="footerImg"
+      alt="Footer Decoration"
+      class="absolute right-1 bottom-1 w-40"
+      style="opacity: 0.3"
+    />
+  </footer>
 </template>
 
 <script>
@@ -162,6 +211,11 @@ import arrowMenuLeft from "../assets/ArrowMenuLeft.png";
 import arrowMenuRight from "../assets/ArrowMenuRight.png";
 import Tagliatelle1 from "../assets/Tagliatelle-al-ragu.png";
 import Tagliatelle2 from "../assets/Tagliatelle-al-ragu2.png";
+import arrowCriticaRight from "../assets/arrowCriticaRight.png";
+import arrowCriticaLeft from "../assets/arrowCriticaLeft.png";
+import aspasRight from "../assets/aspasRight.png";
+import aspasLeft from "../assets/aspasLeft.png";
+import footerImg from "../assets/FooterImg.png";
 
 export default {
   name: "Home",
@@ -173,6 +227,11 @@ export default {
       arrowMenuRight,
       Tagliatelle2,
       Tagliatelle1,
+      arrowCriticaRight,
+      arrowCriticaLeft,
+      aspasRight,
+      aspasLeft,
+      footerImg,
       currentIndex: 2,
       carouselItems: [
         {
@@ -238,10 +297,16 @@ export default {
       };
     },
   },
+  goToPreviousCritica() {
+    console.log("Botão crítica anterior clicado");
+  },
+  goToNextCritica() {
+    console.log("Botão crítica próximo clicado");
+  },
 };
 </script>
 
-<style scoped>
+<style>
 .initial-section::before {
   z-index: -1;
 }
@@ -502,7 +567,7 @@ export default {
   }
 }
 
-button {
+.btn-primary {
   font-size: 0.875rem;
   border-radius: 20px;
   background-color: #ff9900;
@@ -515,12 +580,12 @@ button {
   transition: color 0.3s ease, background-color 0.3s ease;
 }
 
-button span {
+.btn-primary span {
   position: relative;
   z-index: 2;
 }
 
-button::before {
+.btn-primary::before {
   content: "";
   position: absolute;
   top: 50%;
@@ -534,14 +599,14 @@ button::before {
   z-index: 1;
 }
 
-button:hover::before {
+.btn-primary:not(.btn-critica):hover::before {
   width: 300%;
   height: 300%;
 }
 
-button:hover {
-  color: #ff9900;
+.btn-primary:hover {
   background-color: #051114;
+  color: #ff9900;
 }
 
 img {
@@ -590,16 +655,134 @@ img {
     background-color: #040d10;
   }
 
+  .critica-section img {
+    transition: opacity 0.3s ease;
+  }
+
+  .critica-section img:hover {
+    opacity: 0.8;
+  }
+
+  .critica-section button img {
+    width: 24px;
+    height: 24px;
+  }
+
   .text-primary {
     color: #ffa000;
   }
 
-  button {
-    transition: transform 0.3s ease;
+  .btn-critica {
+    width: 50px;
+    height: 50px;
+    background-color: #ffa000;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    border: none;
   }
 
-  button:hover {
-    transform: scale(1.1);
+  .btn-critica:hover {
+    background-color: #ffa000;
+    transform: none;
+  }
+
+  .btn-critica-left {
+    margin-right: 20px;
+  }
+
+  .btn-critica-right {
+    margin-left: 20px;
+  }
+
+  @media (max-width: 768px) {
+    .btn-critica {
+      width: 40px;
+      height: 40px;
+    }
+  }
+
+  .footer {
+    background-color: #040d10;
+    color: #ffffff;
+    padding: 40px 20px;
+  }
+
+  .footer h1 {
+    font-family: "Baskervville", serif;
+    font-style: italic;
+    font-size: 24px;
+    color: #ffffff;
+  }
+
+  .footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .footer-contact {
+    font-size: 14px;
+  }
+
+  .footer-contact a.footer-link {
+    color: #ffa000;
+    text-decoration: none;
+  }
+
+  .footer-contact a.footer-link:hover {
+    text-decoration: underline;
+  }
+
+  .footer-navigation a.footer-nav-link {
+    display: block;
+    margin-bottom: 8px;
+    color: #ffffff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .footer-navigation a.footer-nav-link:hover {
+    color: #ffa000;
+  }
+
+  footer .footer-button {
+    background-color: #ffffff; /* Fundo branco */
+    color: #040d10; /* Texto escuro */
+    border: none; /* Sem borda */
+    border-radius: 9999px; /* Totalmente arredondado */
+    padding: 12px 24px; /* Espaçamento interno */
+    font-family: "Prompt", sans-serif; /* Fonte específica */
+    font-size: 1rem; /* Tamanho do texto */
+    transition: none; /* Sem animações */
+  }
+
+  footer .footer-button:hover {
+    background-color: #ffffff; /* Mantém o fundo branco no hover */
+    color: #040d10; /* Mantém a cor do texto no hover */
+  }
+
+  .footer-bottom {
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  .footer-bottom .footer-image {
+    width: 100%;
+    height: auto;
+    opacity: 0.7;
+  }
+
+  .footer-bottom p {
+    font-size: 12px;
+    color: #ffffff;
+    margin-top: 10px;
+    opacity: 0.8;
   }
 }
 </style>
