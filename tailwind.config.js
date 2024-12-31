@@ -1,6 +1,12 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ["./index.html", "./src/**/*.{vue,js,ts,jsx,tsx}"],
+  safelist: [
+    'slide-enter-active',
+    'slide-leave-active',
+    'slide-enter-from',
+    'slide-leave-to',
+  ],
   theme: {
     extend: {
       colors: {

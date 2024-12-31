@@ -1,45 +1,48 @@
 <template>
   <div class="bg-secondary text-white">
-    <div class="initial-section min-h-screen">
-      <div
-        class="absolute top-40 left-1/3 transform -translate-x-1/2 text-center"
-      >
-        <div class="text-primary font-baskervville italic text-lg mr-96">
-          {{ currentContentIndex + 1 }} / {{ contentList.length }}
-        </div>
-        <div class="bg-primary h-px w-2/3 my-4 mr-28"></div>
-        <h1 class="text-5xl font-baskervville uppercase">
-          {{ contentList[currentContentIndex].title }}
-          <br />
-          <span
-            v-if="contentList[currentContentIndex].subtitle"
-            class="text-primary italic"
-          >
-            {{ contentList[currentContentIndex].subtitle }}
-          </span>
-        </h1>
-        <div class="bg-primary h-px w-2/3 my-4 ml-56"></div>
-        <p class="text-grayText max-w-xl text-sm mx-auto">
-          {{ contentList[currentContentIndex].description }}
-        </p>
-        <ul
-          v-if="contentList[currentContentIndex].schedule"
-          class="text-grayText text-sm mt-4"
+    <div class="initial-section min-h-screen relative">
+      <transition name="slide" mode="out-in">
+        <div
+          :key="currentContentIndex"
+          class="absolute top-40 left-1/3 transform -translate-x-1/2 text-center"
         >
-          <li
-            v-for="(item, index) in contentList[currentContentIndex].schedule"
-            :key="index"
+          <div class="text-primary font-baskervville italic text-lg mr-96">
+            {{ currentContentIndex + 1 }} / {{ contentList.length }}
+          </div>
+          <div class="bg-primary h-px w-2/3 my-4 mr-28"></div>
+          <h1 class="text-5xl font-baskervville uppercase">
+            {{ contentList[currentContentIndex].title }}
+            <br />
+            <span
+              v-if="contentList[currentContentIndex].subtitle"
+              class="text-primary italic"
+            >
+              {{ contentList[currentContentIndex].subtitle }}
+            </span>
+          </h1>
+          <div class="bg-primary h-px w-2/3 my-4 ml-56"></div>
+          <p class="text-grayText max-w-xl text-sm mx-auto">
+            {{ contentList[currentContentIndex].description }}
+          </p>
+          <ul
+            v-if="contentList[currentContentIndex].schedule"
+            class="text-grayText text-sm mt-4"
           >
-            {{ item }}
-          </li>
-        </ul>
+            <li
+              v-for="(item, index) in contentList[currentContentIndex].schedule"
+              :key="index"
+            >
+              {{ item }}
+            </li>
+          </ul>
 
-        <button
-          class="btn-primary mt-6 px-6 py-3 bg-primary text-secondary text-sm font-prompt rounded"
-        >
-          <span>{{ contentList[currentContentIndex].buttonText }}</span>
-        </button>
-      </div>
+          <button
+            class="btn-primary mt-6 px-6 py-3 bg-primary text-secondary text-sm font-prompt rounded"
+          >
+            <span>{{ contentList[currentContentIndex].buttonText }}</span>
+          </button>
+        </div>
+      </transition>
       <div
         class="flex items-center justify-center gap-8 absolute bottom-10 left-1/2 transform -translate-x-1/2"
       >
@@ -47,13 +50,21 @@
           :src="arrowLeft"
           alt="Seta Esquerda"
           class="w-8 h-8 cursor-pointer hover:opacity-80"
-          @click="goToPrevious"
+          @click="
+            stopAutoSlide();
+            goToPrevious();
+            startAutoSlide();
+          "
         />
         <img
           :src="arrowRight"
           alt="Seta Direita"
           class="w-8 h-8 cursor-pointer hover:opacity-80"
-          @click="goToNext"
+          @click="
+            stopAutoSlide();
+            goToNext();
+            startAutoSlide();
+          "
         />
       </div>
     </div>
@@ -250,6 +261,7 @@ export default {
       footerImg,
       currentIndex: 2,
       currentContentIndex: 0,
+      autoSlideInterval: null,
       carouselItems: [
         {
           image: "path/to/image1.jpg",
@@ -350,11 +362,28 @@ export default {
       this.currentContentIndex =
         (this.currentContentIndex - 1 + this.contentList.length) %
         this.contentList.length;
+        console.log("Index anterior:", this.currentContentIndex);
     },
     goToNext() {
       this.currentContentIndex =
         (this.currentContentIndex + 1) % this.contentList.length;
+        console.log("Proximo index:", this.currentContentIndex);
     },
+    startAutoSlide() {
+      this.autoSlideInterval = setInterval(() => {
+        this.goToNext();
+      }, 5000);
+    },
+    stopAutoSlide() {
+      clearInterval(this.autoSlideInterval);
+      this.autoSlideInterval = null;
+    },
+  },
+  mounted() {
+    this.startAutoSlide();
+  },
+  beforeDestroy() {
+    this.stopAutoSlide();
   },
 };
 </script>
@@ -375,6 +404,7 @@ export default {
   z-index: 0;
   width: 100%;
   position: relative;
+  overflow: hidden;
 }
 
 .initial-section::before {
@@ -805,19 +835,19 @@ img {
   }
 
   footer .footer-button {
-    background-color: #ffffff; /* Fundo branco */
-    color: #040d10; /* Texto escuro */
-    border: none; /* Sem borda */
-    border-radius: 9999px; /* Totalmente arredondado */
-    padding: 12px 24px; /* Espaçamento interno */
-    font-family: "Prompt", sans-serif; /* Fonte específica */
-    font-size: 1rem; /* Tamanho do texto */
-    transition: none; /* Sem animações */
+    background-color: #ffffff;
+    color: #040d10;
+    border: none;
+    border-radius: 9999px;
+    padding: 12px 24px;
+    font-family: "Prompt", sans-serif;
+    font-size: 1rem;
+    transition: none;
   }
 
   footer .footer-button:hover {
-    background-color: #ffffff; /* Mantém o fundo branco no hover */
-    color: #040d10; /* Mantém a cor do texto no hover */
+    background-color: #ffffff;
+    color: #040d10;
   }
 
   .footer-bottom {
@@ -837,5 +867,18 @@ img {
     margin-top: 10px;
     opacity: 0.8;
   }
+
+  .slide-enter-active, .slide-leave-active {
+  transition: opacity 0.5s ease-in-out;
+}
+
+.slide-enter-from {
+  opacity: 0;
+}
+
+.slide-leave-to {
+  opacity: 0;
+}
+  
 }
 </style>
