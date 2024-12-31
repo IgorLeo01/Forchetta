@@ -5,25 +5,41 @@
         class="absolute top-40 left-1/3 transform -translate-x-1/2 text-center"
       >
         <div class="text-primary font-baskervville italic text-lg mr-96">
-          01 / 03
+          {{ currentContentIndex + 1 }} / {{ contentList.length }}
         </div>
         <div class="bg-primary h-px w-2/3 my-4 mr-28"></div>
         <h1 class="text-5xl font-baskervville uppercase">
-          Clássico Restaurante<br />
-          <span class="text-primary italic">Italiano</span>
+          {{ contentList[currentContentIndex].title }}
+          <br />
+          <span
+            v-if="contentList[currentContentIndex].subtitle"
+            class="text-primary italic"
+          >
+            {{ contentList[currentContentIndex].subtitle }}
+          </span>
         </h1>
         <div class="bg-primary h-px w-2/3 my-4 ml-56"></div>
         <p class="text-grayText max-w-xl text-sm mx-auto">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce euismod
-          posuere nisl, id tristique libero mattis et. Vivamus orci risus...''
+          {{ contentList[currentContentIndex].description }}
         </p>
+        <ul
+          v-if="contentList[currentContentIndex].schedule"
+          class="text-grayText text-sm mt-4"
+        >
+          <li
+            v-for="(item, index) in contentList[currentContentIndex].schedule"
+            :key="index"
+          >
+            {{ item }}
+          </li>
+        </ul>
+
         <button
           class="btn-primary mt-6 px-6 py-3 bg-primary text-secondary text-sm font-prompt rounded"
         >
-          <span>Sobre Nós</span>
+          <span>{{ contentList[currentContentIndex].buttonText }}</span>
         </button>
       </div>
-
       <div
         class="flex items-center justify-center gap-8 absolute bottom-10 left-1/2 transform -translate-x-1/2"
       >
@@ -233,6 +249,7 @@ export default {
       aspasLeft,
       footerImg,
       currentIndex: 2,
+      currentContentIndex: 0,
       carouselItems: [
         {
           image: "path/to/image1.jpg",
@@ -267,6 +284,33 @@ export default {
           title: "Prato 4",
         },
       ],
+      contentList: [
+        {
+          title: "Clássico Restaurante",
+          subtitle: "Italiano",
+          description:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce euismod posuere nisl, id tristique libero mattis et. Vivamus orci risus...",
+          buttonText: "Sobre Nós",
+        },
+        {
+          title: "Experiência Gastronômica",
+          subtitle: "Requintada",
+          description:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce euismod posuere nisl, id tristique libero mattis et. Vivamus orci risus, facilisis at felis non, luctus maximus justo...",
+          buttonText: "Descubra o Cardápio",
+        },
+        {
+          title: "Horário de Funcionamento",
+          subtitle: "",
+          description:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce euismod posuere nisl, id tristique libero mattis et. Vivamus orci risus, facilisis at felis non, luctus maximus justo. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aliquam vitae ex felis. Donec ac diam in sem convallis facilisis non et neque. Vivamus a lacus pulvinar turpis maximus rutrum ut ac purus. Donec.",
+          buttonText: "Reservar",
+          schedule: [
+            "Sábado - Domingo: 11:30h - 23:00h",
+            "Terça - Sexta: 13:30h - 00:00h",
+          ],
+        },
+      ],
     };
   },
   methods: {
@@ -296,12 +340,21 @@ export default {
         transition: "transform 0.5s ease, opacity 0.5s ease",
       };
     },
-  },
-  goToPreviousCritica() {
-    console.log("Botão crítica anterior clicado");
-  },
-  goToNextCritica() {
-    console.log("Botão crítica próximo clicado");
+    goToPreviousCritica() {
+      console.log("Botão crítica anterior clicado");
+    },
+    goToNextCritica() {
+      console.log("Botão crítica próximo clicado");
+    },
+    goToPrevious() {
+      this.currentContentIndex =
+        (this.currentContentIndex - 1 + this.contentList.length) %
+        this.contentList.length;
+    },
+    goToNext() {
+      this.currentContentIndex =
+        (this.currentContentIndex + 1) % this.contentList.length;
+    },
   },
 };
 </script>
