@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Home from './components/Home.vue';
+import Home from './pages/Home.vue';
 import Navbar from './components/Navbar.vue';
 </script>
 

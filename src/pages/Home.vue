@@ -1,46 +1,55 @@
 <template>
   <div class="bg-secondary text-white">
     <div class="initial-section min-h-screen relative">
-      <transition name="slide" mode="out-in">
+      <transition name="slide-horizontal" mode="out-in">
         <div
-          :key="currentContentIndex"
-          class="absolute top-40 left-1/3 transform -translate-x-1/2 text-center"
+          :key="`content-${currentContentIndex}`"
+          class="absolute top-40 left-1/2 transform -translate-x-1/2 flex items-start gap-8 w-4/5"
         >
-          <div class="text-primary font-baskervville italic text-lg mr-96">
-            {{ currentContentIndex + 1 }} / {{ contentList.length }}
+          <div class="flex-1 text-left">
+            <div class="text-primary font-baskervville italic text-lg">
+              {{ currentContentIndex + 1 }} / {{ contentList.length }}
+            </div>
+            <div class="bg-primary h-px w-2/3 my-4"></div>
+            <h1 class="text-5xl font-baskervville uppercase mb-4">
+              {{ contentList[currentContentIndex].title }}
+              <br />
+              <span
+                v-if="contentList[currentContentIndex].subtitle"
+                class="text-primary italic"
+              >
+                {{ contentList[currentContentIndex].subtitle }}
+              </span>
+            </h1>
+            <p class="text-grayText max-w-xl text-sm">
+              {{ contentList[currentContentIndex].description }}
+            </p>
+            <ul
+              v-if="contentList[currentContentIndex].schedule"
+              class="text-grayText text-sm mt-4"
+            >
+              <li
+                v-for="(item, index) in contentList[currentContentIndex]
+                  .schedule"
+                :key="index"
+              >
+                {{ item }}
+              </li>
+            </ul>
+            <button
+              class="btn-primary mt-6 px-6 py-3 bg-primary text-secondary text-sm font-prompt rounded"
+            >
+              <span>{{ contentList[currentContentIndex].buttonText }}</span>
+            </button>
           </div>
-          <div class="bg-primary h-px w-2/3 my-4 mr-28"></div>
-          <h1 class="text-5xl font-baskervville uppercase">
-            {{ contentList[currentContentIndex].title }}
-            <br />
-            <span
-              v-if="contentList[currentContentIndex].subtitle"
-              class="text-primary italic"
-            >
-              {{ contentList[currentContentIndex].subtitle }}
-            </span>
-          </h1>
-          <div class="bg-primary h-px w-2/3 my-4 ml-56"></div>
-          <p class="text-grayText max-w-xl text-sm mx-auto">
-            {{ contentList[currentContentIndex].description }}
-          </p>
-          <ul
-            v-if="contentList[currentContentIndex].schedule"
-            class="text-grayText text-sm mt-4"
-          >
-            <li
-              v-for="(item, index) in contentList[currentContentIndex].schedule"
-              :key="index"
-            >
-              {{ item }}
-            </li>
-          </ul>
-
-          <button
-            class="btn-primary mt-6 px-6 py-3 bg-primary text-secondary text-sm font-prompt rounded"
-          >
-            <span>{{ contentList[currentContentIndex].buttonText }}</span>
-          </button>
+          <div class="flex-1 flex justify-end">
+            <img
+              v-if="contentList[currentContentIndex].image"
+              :src="contentList[currentContentIndex].image"
+              alt="Conteúdo Visual"
+              class="rounded-lg shadow-lg max-w-full w-3/4 md:w-4/5"
+            />
+          </div>
         </div>
       </transition>
       <div
@@ -205,7 +214,7 @@
           <p class="font-prompt text-base">(11) 3237-0717</p>
           <p class="font-prompt text-sm mt-2 text-primary">Endereço:</p>
           <p class="font-prompt text-base">
-            Rua Santa Justina, 210 Vila Olimpia – São Paulo/SP
+            Rua Santa Justina, 210 Vila Olimpia - São Paulo/SP
           </p>
         </div>
         <div class="flex flex-col items-center mt-4 md:mt-0">
@@ -243,6 +252,7 @@ import arrowCriticaLeft from "../assets/arrowCriticaLeft.png";
 import aspasRight from "../assets/aspasRight.png";
 import aspasLeft from "../assets/aspasLeft.png";
 import footerImg from "../assets/FooterImg.png";
+import carbonara from "../assets/Carbonara.png";
 
 export default {
   name: "Home",
@@ -310,6 +320,7 @@ export default {
           description:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce euismod posuere nisl, id tristique libero mattis et. Vivamus orci risus, facilisis at felis non, luctus maximus justo...",
           buttonText: "Descubra o Cardápio",
+          image: carbonara,
         },
         {
           title: "Horário de Funcionamento",
@@ -317,6 +328,7 @@ export default {
           description:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce euismod posuere nisl, id tristique libero mattis et. Vivamus orci risus, facilisis at felis non, luctus maximus justo. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aliquam vitae ex felis. Donec ac diam in sem convallis facilisis non et neque. Vivamus a lacus pulvinar turpis maximus rutrum ut ac purus. Donec.",
           buttonText: "Reservar",
+          image: Tagliatelle1,
           schedule: [
             "Sábado - Domingo: 11:30h - 23:00h",
             "Terça - Sexta: 13:30h - 00:00h",
@@ -362,12 +374,12 @@ export default {
       this.currentContentIndex =
         (this.currentContentIndex - 1 + this.contentList.length) %
         this.contentList.length;
-        console.log("Index anterior:", this.currentContentIndex);
+      console.log("Index anterior:", this.currentContentIndex);
     },
     goToNext() {
       this.currentContentIndex =
         (this.currentContentIndex + 1) % this.contentList.length;
-        console.log("Proximo index:", this.currentContentIndex);
+      console.log("Próximo index:", this.currentContentIndex);
     },
     startAutoSlide() {
       this.autoSlideInterval = setInterval(() => {
@@ -384,6 +396,15 @@ export default {
   },
   beforeDestroy() {
     this.stopAutoSlide();
+  },
+  getImageForContent(index) {
+    const images = {
+      1: require("../assets/Carbonara.png"),
+      2: require("../assets/Tagliatelle-al-ragu.png"),
+    };
+    console.log("Índice recebido:", index);
+    console.log("Imagem retornada:", images[index]);
+    return images[index] || "";
   },
 };
 </script>
@@ -868,17 +889,19 @@ img {
     opacity: 0.8;
   }
 
-  .slide-enter-active, .slide-leave-active {
-  transition: opacity 0.5s ease-in-out;
-}
+  .slide-horizontal-enter-active,
+  .slide-horizontal-leave-active {
+    transition: transform 0.5s ease, opacity 0.5s ease;
+  }
 
-.slide-enter-from {
-  opacity: 0;
-}
+  .slide-horizontal-enter-from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
 
-.slide-leave-to {
-  opacity: 0;
-}
-  
+  .slide-horizontal-leave-to {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
 }
 </style>
