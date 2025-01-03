@@ -14,10 +14,42 @@
         >
       </div>
       <ul class="hidden md:flex gap-10 text-base">
-        <li><a href="#" class="hover:text-primary text-white">Inicio</a></li>
-        <li><a href="#" class="hover:text-primary text-white">Sobre</a></li>
-        <li><a href="#" class="hover:text-primary text-white">Cardápio</a></li>
-        <li><a href="#" class="hover:text-primary text-white">Contato</a></li>
+        <li>
+          <a
+            href="#"
+            class="hover:text-primary text-white"
+            @click.prevent="navigate('home')"
+          >
+            Início
+          </a>
+        </li>
+        <li>
+          <a
+            href="#"
+            class="hover:text-primary text-white"
+            @click.prevent="navigate('sobre')"
+          >
+            Sobre
+          </a>
+        </li>
+        <li>
+          <a
+            href="#"
+            class="hover:text-primary text-white"
+            @click.prevent="navigate('menu')"
+          >
+            Cardápio
+          </a>
+        </li>
+        <li>
+          <a
+            href="#"
+            class="hover:text-primary text-white"
+            @click.prevent="navigate('contato')"
+          >
+            Contato
+          </a>
+        </li>
       </ul>
 
       <a
@@ -51,6 +83,9 @@ export default {
   methods: {
     toggleMenu() {
       this.isMenuOpen = !this.isMenuOpen;
+    },
+    navigate(page) {
+      this.$emit("navigate", page);
     },
   },
 };
@@ -86,7 +121,6 @@ a.text-primary:hover {
   left: 0;
   bottom: -3px;
 }
-
 
 nav {
   position: fixed;
