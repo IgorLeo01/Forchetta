@@ -51,7 +51,6 @@
           </a>
         </li>
       </ul>
-
       <a
         href="#"
         class="hidden md:block text-primary font-prompt uppercase text-sm mr-4"
@@ -68,7 +67,7 @@
 </template>
 
 <script>
-import HamburguerMenu from "./HamburguerMenu.vue";
+import HamburguerMenu from "../components/HamburguerMenu.vue";
 
 export default {
   name: "Navbar",

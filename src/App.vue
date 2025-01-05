@@ -1,10 +1,16 @@
 <script setup lang="ts">
 import Home from './pages/Home.vue';
-import Navbar from './components/Navbar.vue';
 import Menu from './pages/Menu.vue';
-import { ref } from 'vue';
+import Sobre from './pages/Sobre.vue';
+import Reservar from './pages/Reservar.vue';
+import Navbar from './layouts/Navbar.vue';
+import { ref, watch } from 'vue';
+
 const currentPage = ref('home');
 
+watch(currentPage, () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
 </script>
 
 <template>
@@ -15,7 +21,14 @@ const currentPage = ref('home');
   <div v-if="currentPage === 'menu'">
     <Menu />
   </div>
+  <div v-if="currentPage === 'sobre'">
+    <Sobre />
+  </div>
+  <div v-if="currentPage === 'reservar'">
+    <Reservar />
+  </div>
 </template>
+
 
 <style scoped>
 .logo {

@@ -1,3 +1,7 @@
+<script setup>
+import Footer from '../layouts/Footer.vue';
+</script>
+
 <template>
   <div class="menu-page bg-secondary text-white">
     <header class="menu-header py-12">
@@ -71,10 +75,12 @@
         </div>
       </div>
     </section>
+    <Footer />
   </div>
 </template>
 
 <script>
+import Footer from '../layouts/Footer.vue';
 export default {
   name: "Menu",
   data() {

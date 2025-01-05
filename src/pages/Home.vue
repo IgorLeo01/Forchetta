@@ -1,3 +1,7 @@
+<script setup>
+import Footer from '../layouts/Footer.vue';
+</script>
+
 <template>
   <div class="bg-secondary text-white">
     <div class="initial-section min-h-screen relative">
@@ -185,59 +189,8 @@
         </div>
       </div>
     </div>
+    <Footer />
   </div>
-  <footer class="relative bg-[#040d10] text-white py-8">
-    <div class="container mx-auto max-w-3xl">
-      <div class="flex justify-between items-center mb-4">
-        <p class="font-prompt text-base">laforchetta@laforchetta.com.br</p>
-        <div class="flex gap-6">
-          <a href="#" class="font-prompt text-sm uppercase hover:text-[#FFA000]"
-            >Início</a
-          >
-          <a href="#" class="font-prompt text-sm uppercase hover:text-[#FFA000]"
-            >Sobre</a
-          >
-          <a href="#" class="font-prompt text-sm uppercase hover:text-[#FFA000]"
-            >Cardápio</a
-          >
-          <a href="#" class="font-prompt text-sm uppercase hover:text-[#FFA000]"
-            >Contato</a
-          >
-        </div>
-      </div>
-      <div class="w-full h-px bg-[#FFA000] opacity-30"></div>
-      <div class="flex flex-col md:flex-row justify-between items-center mt-4">
-        <div
-          class="flex flex-col items-center md:items-start text-center md:text-left"
-        >
-          <p class="font-prompt text-sm text-primary">Telefone:</p>
-          <p class="font-prompt text-base">(11) 3237-0717</p>
-          <p class="font-prompt text-sm mt-2 text-primary">Endereço:</p>
-          <p class="font-prompt text-base">
-            Rua Santa Justina, 210 Vila Olimpia - São Paulo/SP
-          </p>
-        </div>
-        <div class="flex flex-col items-center mt-4 md:mt-0">
-          <p class="font-prompt text-base">Sábado - Domingo: 11:30h - 23:00h</p>
-          <p class="font-prompt text-base">Terça - Sexta: 13:30h - 00:00h</p>
-        </div>
-        <div class="mt-4 md:mt-0">
-          <button
-            class="footer-button bg-white text-[#040d10] font-prompt text-sm px-6 py-2 rounded-full border-none"
-          >
-            Reservar
-          </button>
-        </div>
-      </div>
-      <div class="w-full h-px bg-[#FFA000] opacity-30 mt-6"></div>
-    </div>
-    <img
-      :src="footerImg"
-      alt="Footer Decoration"
-      class="absolute right-1 bottom-1 w-40"
-      style="opacity: 0.3"
-    />
-  </footer>
 </template>
 
 <script>
