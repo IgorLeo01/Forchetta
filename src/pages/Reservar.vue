@@ -1,11 +1,11 @@
 <script setup>
-import Navbar from '../layouts/Navbar.vue';
-import Footer from '../layouts/Footer.vue';
+import Navbar from "../layouts/Navbar.vue";
+import Footer from "../layouts/Footer.vue";
+import Reservar from "../assets/Reservar.png";
 </script>
 
 <template>
   <div class="bg-secondary text-white min-h-screen flex flex-col">
-    <Navbar />
     <div class="content px-10 py-16 flex-grow">
       <p class="breadcrumb text-center italic uppercase text-white">
         Início / Reservar
@@ -21,15 +21,13 @@ import Footer from '../layouts/Footer.vue';
       <div class="flex flex-col md:flex-row gap-10 items-start">
         <div class="md:w-1/2 flex justify-center">
           <img
-            src="https://via.placeholder.com/600x400"
+            :src="Reservar"
             alt="Restaurante Forchetta"
-            class="rounded-lg shadow-lg max-w-full"
+            class="reservar-image rounded-lg shadow-lg"
           />
         </div>
         <div class="md:w-1/2">
-          <h2 class="text-3xl font-baskervville uppercase mb-6">
-            Reservas
-          </h2>
+          <h2 class="text-3xl font-baskervville uppercase mb-6">Reservas</h2>
           <form class="space-y-6">
             <div>
               <label
@@ -47,6 +45,13 @@ import Footer from '../layouts/Footer.vue';
                 <option value="3">3 pessoas</option>
                 <option value="4">4 pessoas</option>
                 <option value="5">5 pessoas</option>
+                <option value="6">6 pessoas</option>
+                <option value="7">7 pessoas</option>
+                <option value="8">8 pessoas</option>
+                <option value="9">9 pessoas</option>
+                <option value="10">10 pessoas</option>
+                <option value="11">11 pessoas</option>
+                <option value="12">12 pessoas</option>
               </select>
             </div>
             <div>
@@ -60,10 +65,17 @@ import Footer from '../layouts/Footer.vue';
                 id="time"
                 class="w-full bg-transparent border-b border-primary text-white p-2 mt-1 outline-none focus:border-white"
               >
-                <option value="12:00">12:00h</option>
                 <option value="13:00">13:00h</option>
+                <option value="14:00">14:00h</option>
+                <option value="15:00">15:00h</option>
+                <option value="16:00">16:00h</option>
+                <option value="17:00">17:00h</option>
+                <option value="18:00">18:00h</option>
                 <option value="19:00">19:00h</option>
                 <option value="20:00">20:00h</option>
+                <option value="21:00">21:00h</option>
+                <option value="22:00">22:00h</option>
+                <option value="23:00">23:00h</option>
               </select>
             </div>
             <div>
@@ -113,17 +125,26 @@ import Footer from '../layouts/Footer.vue';
   margin-bottom: 30px;
 }
 
-form select,
-form input {
+form select {
   color: #ffffff;
+  background-color: transparent; 
   border: none;
   border-bottom: 2px solid #ff9900;
 }
 
-form select:focus,
-form input:focus {
+form select:focus {
   outline: none;
   border-bottom: 2px solid #ffffff;
+}
+
+form select option {
+  background-color: #051114; 
+  color: #ffffff; 
+}
+
+
+form select::-ms-expand {
+  display: none; 
 }
 
 button {
@@ -134,5 +155,20 @@ button {
 button:hover {
   background-color: #ffffff;
   color: #ff9900;
+}
+
+.reservar-image {
+  max-width: 100%;
+  height: auto;
+  width: 80%;
+  max-height: 500px;
+  object-fit: cover;
+}
+
+@media (max-width: 768px) {
+  .reservar-image {
+    width: 100%;
+    max-height: 400px;
+  }
 }
 </style>

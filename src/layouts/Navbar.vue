@@ -54,6 +54,7 @@
       <a
         href="#"
         class="hidden md:block text-primary font-prompt uppercase text-sm mr-4"
+        @click.prevent="navigate('reservar')"
       >
         Reservar
       </a>

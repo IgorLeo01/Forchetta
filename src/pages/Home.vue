@@ -206,6 +206,8 @@ import aspasRight from "../assets/aspasRight.png";
 import aspasLeft from "../assets/aspasLeft.png";
 import footerImg from "../assets/FooterImg.png";
 import carbonara from "../assets/Carbonara.png";
+import reservar from "../assets/Reservar.png";
+import horario from "../assets/Horario.png";
 
 export default {
   name: "Home",
@@ -222,6 +224,8 @@ export default {
       aspasRight,
       aspasLeft,
       footerImg,
+      reservar,
+      horario,
       currentIndex: 2,
       currentContentIndex: 0,
       autoSlideInterval: null,
@@ -281,7 +285,7 @@ export default {
           description:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce euismod posuere nisl, id tristique libero mattis et. Vivamus orci risus, facilisis at felis non, luctus maximus justo. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aliquam vitae ex felis. Donec ac diam in sem convallis facilisis non et neque. Vivamus a lacus pulvinar turpis maximus rutrum ut ac purus. Donec.",
           buttonText: "Reservar",
-          image: Tagliatelle1,
+          image: horario,
           schedule: [
             "Sábado - Domingo: 11:30h - 23:00h",
             "Terça - Sexta: 13:30h - 00:00h",
