@@ -20,20 +20,7 @@ watch(currentPage, () => {
 <template>
   <div>
     <Navbar @navigate="currentPage = $event" />
-
-    <div v-if="currentPage === 'home'">
-      <Home />
-    </div>
-    <div v-if="currentPage === 'menu'">
-      <Menu />
-    </div>
-    <div v-if="currentPage === 'sobre'">
-      <Sobre />
-    </div>
-    <div v-if="currentPage === 'reservar'">
-      <Reservar />
-    </div>
-
+    <router-view></router-view>
     <Footer @navigate="currentPage = $event" />
   </div>
 </template>

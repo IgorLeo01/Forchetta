@@ -3,11 +3,11 @@
     <button @click="closeMenu" class="close-button">
       ✕
     </button>
-    <a href="#" @click.prevent="navigate('home')">Início</a>
-    <a href="#" @click.prevent="navigate('sobre')">Sobre</a>
-    <a href="#" @click.prevent="navigate('cardapio')">Cardápio</a>
-    <a href="#" @click.prevent="navigate('contato')">Contato</a>
-    <a href="#" @click.prevent="navigate('reservar')">Reservar</a>
+    <router-link to="/" class="sidebar-link">Início</router-link>
+    <router-link to="/sobre" class="sidebar-link">Sobre</router-link>
+    <router-link to="/menu" class="sidebar-link">Cardápio</router-link>
+    <router-link to="/contato" class="sidebar-link">Contato</router-link>
+    <router-link to="/reservar" class="sidebar-link">Reservar</router-link>
   </div>
 </template>
 
@@ -21,10 +21,6 @@ export default defineComponent({
       type: Boolean as PropType<boolean>,
       required: true,
     },
-    navigate: {
-      type: Function as PropType<(page: string) => void>,
-      required: true,
-    },
   },
   methods: {
     closeMenu() {
@@ -33,6 +29,7 @@ export default defineComponent({
   },
 });
 </script>
+
 
 <style scoped>
 .sidebar {

@@ -1,7 +1,3 @@
-<script setup>
-import Footer from '../layouts/Footer.vue';
-</script>
-
 <template>
   <div class="bg-secondary text-white">
     <div class="initial-section min-h-screen relative">

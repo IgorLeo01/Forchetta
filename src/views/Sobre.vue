@@ -1,7 +1,3 @@
-<script setup>
-import Footer from '../layouts/Footer.vue';
-</script>
-
 <template>
   <div class="bg-secondary text-white min-h-screen flex flex-col">
     <div class="content px-10 py-16 flex-grow">

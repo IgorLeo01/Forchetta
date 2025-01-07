@@ -1,4 +1,4 @@
-import { createRouter, createWebHashHistory } from "vue-router";
+import { createRouter, createWebHistory } from "vue-router";
 
 import Home from "../views/Home.vue";
 import Sobre from "../views/Sobre.vue";
@@ -17,8 +17,8 @@ const routes = [
     component: Sobre,
   },
   {
-    path: "/cardapio",
-    name: "cardapio",
+    path: "/menu",
+    name: "menu",
     component: Menu,
   },
   {
@@ -29,8 +29,16 @@ const routes = [
 ];
 
 const router = createRouter({
-  history: createWebHashHistory(),
-  routes,
-});
+    history: createWebHistory(),
+    routes,
+    scrollBehavior(to, from, savedPosition) {
+      if (savedPosition) {
+        return savedPosition; // Restaura a posição salva, se existir
+      }
+  
+      // Se estivermos indo para uma nova página, garantimos que o scroll vá ao topo
+      return { top: 0 };
+    },
+  });
 
 export default router;

@@ -4,33 +4,30 @@
       <div class="flex justify-between items-center mb-4">
         <p class="font-prompt text-base">laforchetta@laforchetta.com.br</p>
         <div class="flex gap-6">
-          <a
-            href="#"
+          <router-link
+            to="/"
             class="font-prompt text-sm uppercase hover:text-[#FFA000]"
-            @click.prevent="navigate('home')"
           >
             Início
-          </a>
-          <a
-            href="#"
+          </router-link>
+          <router-link
+            to="/sobre"
             class="font-prompt text-sm uppercase hover:text-[#FFA000]"
-            @click.prevent="navigate('sobre')"
           >
             Sobre
-          </a>
-          <a
-            href="#"
+          </router-link>
+          <router-link
+            to="/menu"
             class="font-prompt text-sm uppercase hover:text-[#FFA000]"
-            @click.prevent="navigate('menu')"
           >
             Cardápio
-          </a>
-          <a
-            href="#"
+          </router-link>
+          <router-link
+            to="/contato"
             class="font-prompt text-sm uppercase hover:text-[#FFA000]"
           >
             Contato
-          </a>
+          </router-link>
         </div>
       </div>
       <div class="w-full h-px bg-[#FFA000] opacity-30"></div>
@@ -50,12 +47,12 @@
           <p class="font-prompt text-base">Terça - Sexta: 13:30h - 00:00h</p>
         </div>
         <div class="mt-4 md:mt-0">
-          <button
+          <router-link
+            to="/reservar"
             class="footer-button bg-white text-[#040d10] font-prompt text-sm px-6 py-2 rounded-full border-none"
-            @click.prevent="navigate('reservar')"
           >
             Reservar
-          </button>
+          </router-link>
         </div>
       </div>
       <div class="w-full h-px bg-[#FFA000] opacity-30 mt-6"></div>

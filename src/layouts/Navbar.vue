@@ -14,56 +14,50 @@
         >
       </div>
       <ul class="hidden md:flex gap-12 text-lg">
-        <!-- Aumentando o gap e a fonte -->
         <li>
-          <a
-            href="#"
+          <router-link
+            to="/"
             class="hover:text-primary text-white font-prompt text-lg py-2 px-4 rounded-md transition-all"
-            @click.prevent="navigate('home')"
           >
             Início
-          </a>
+          </router-link>
         </li>
         <li>
-          <a
-            href="#"
+          <router-link
+            to="/sobre"
             class="hover:text-primary text-white font-prompt text-lg py-2 px-4 rounded-md transition-all"
-            @click.prevent="navigate('sobre')"
           >
             Sobre
-          </a>
+          </router-link>
         </li>
         <li>
-          <a
-            href="#"
+          <router-link
+            to="/menu"
             class="hover:text-primary text-white font-prompt text-lg py-2 px-4 rounded-md transition-all"
-            @click.prevent="navigate('menu')"
           >
             Cardápio
-          </a>
+          </router-link>
         </li>
         <li>
-          <a
-            href="#"
+          <router-link
             class="hover:text-primary text-white font-prompt text-lg py-2 px-4 rounded-md transition-all"
           >
             Contato
-          </a>
+          </router-link>
         </li>
       </ul>
-      <a
-        href="#"
+      <router-link
+        to="/reservar"
         class="hidden md:block text-primary font-prompt uppercase text-sm mr-4"
-        @click.prevent="navigate('reservar')"
       >
         Reservar
-      </a>
+      </router-link>
       <button @click="toggleMenu" class="block md:hidden focus:outline-none">
         <img src="../assets/Hamburguer.png" alt="Menu" class="w-6 h-6" />
       </button>
     </nav>
 
-    <HamburguerMenu :isMenuOpen="isMenuOpen" @close-menu="toggleMenu" :navigate="navigate" />
+    <HamburguerMenu :isMenuOpen="isMenuOpen" @close-menu="toggleMenu" />
   </div>
 </template>
 
