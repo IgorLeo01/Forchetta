@@ -36,7 +36,6 @@ import Footer from '../layouts/Footer.vue';
         </div>
       </div>
     </div>
-    <Footer />
   </div>
 </template>
 

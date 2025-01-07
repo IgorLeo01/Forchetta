@@ -42,13 +42,7 @@
           </a>
         </li>
         <li>
-          <a
-            href="#"
-            class="hover:text-primary text-white"
-            @click.prevent="navigate('contato')"
-          >
-            Contato
-          </a>
+          <a href="#" class="hover:text-primary text-white"> Contato </a>
         </li>
       </ul>
       <a

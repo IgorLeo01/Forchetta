@@ -1,34 +1,42 @@
 <script setup lang="ts">
-import Home from './pages/Home.vue';
-import Menu from './pages/Menu.vue';
-import Sobre from './pages/Sobre.vue';
-import Reservar from './pages/Reservar.vue';
-import Navbar from './layouts/Navbar.vue';
-import { ref, watch } from 'vue';
+import Home from "./pages/Home.vue";
+import Menu from "./pages/Menu.vue";
+import Sobre from "./pages/Sobre.vue";
+import Reservar from "./pages/Reservar.vue";
+import Navbar from "./layouts/Navbar.vue";
+import Footer from "./layouts/Footer.vue";
+import { ref, watch } from "vue";
 
-const currentPage = ref('home');
+const currentPage = ref("home");
 
 watch(currentPage, () => {
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+  if (window.scrollY !== 0) {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
 });
+
 </script>
 
 <template>
-  <Navbar @navigate="currentPage = $event" />
-  <div v-if="currentPage === 'home'">
-    <Home />
-  </div>
-  <div v-if="currentPage === 'menu'">
-    <Menu />
-  </div>
-  <div v-if="currentPage === 'sobre'">
-    <Sobre />
-  </div>
-  <div v-if="currentPage === 'reservar'">
-    <Reservar />
+  <div>
+    <Navbar @navigate="currentPage = $event" />
+
+    <div v-if="currentPage === 'home'">
+      <Home />
+    </div>
+    <div v-if="currentPage === 'menu'">
+      <Menu />
+    </div>
+    <div v-if="currentPage === 'sobre'">
+      <Sobre />
+    </div>
+    <div v-if="currentPage === 'reservar'">
+      <Reservar />
+    </div>
+
+    <Footer @navigate="currentPage = $event" />
   </div>
 </template>
-
 
 <style scoped>
 .logo {

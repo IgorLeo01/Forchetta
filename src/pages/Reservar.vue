@@ -75,7 +75,6 @@ import Reservar from "../assets/Reservar.png";
                 <option value="20:00">20:00h</option>
                 <option value="21:00">21:00h</option>
                 <option value="22:00">22:00h</option>
-                <option value="23:00">23:00h</option>
               </select>
             </div>
             <div>
@@ -101,7 +100,6 @@ import Reservar from "../assets/Reservar.png";
         </div>
       </div>
     </div>
-    <Footer />
   </div>
 </template>
 

@@ -135,14 +135,14 @@ import Footer from '../layouts/Footer.vue';
             risus, facilisis at felis non, luctus maximus justo. Orci varius
           </p>
           <img
-            src="../assets/Tagliatelle-al-ragu2.png"
+            :src="especialidade1"
             alt="Prato menor"
             class="prato-image-left mt-6"
           />
         </div>
         <div class="image-right-container">
           <img
-            src="../assets/Tagliatelle-al-ragu.png"
+            :src="especialidade2"
             alt="Prato maior"
             class="prato-image-right"
           />
@@ -189,7 +189,6 @@ import Footer from '../layouts/Footer.vue';
         </div>
       </div>
     </div>
-    <Footer />
   </div>
 </template>
 
@@ -208,6 +207,8 @@ import footerImg from "../assets/FooterImg.png";
 import carbonara from "../assets/Carbonara.png";
 import reservar from "../assets/Reservar.png";
 import horario from "../assets/Horario.png";
+import especialidade1 from "../assets/SpaghettiAllaSiracusa.jpg";
+import especialidade2 from "../assets/Especialidade.jpg";
 
 export default {
   name: "Home",
@@ -226,6 +227,8 @@ export default {
       footerImg,
       reservar,
       horario,
+      especialidade1,
+      especialidade2,
       currentIndex: 2,
       currentContentIndex: 0,
       autoSlideInterval: null,
