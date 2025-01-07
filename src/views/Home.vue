@@ -25,7 +25,7 @@ import Footer from '../layouts/Footer.vue';
                 {{ contentList[currentContentIndex].subtitle }}
               </span>
             </h1>
-            <p class="text-grayText max-w-xl text-sm">
+            <p class="text-grayText max-w-xl text-lg">
               {{ contentList[currentContentIndex].description }}
             </p>
             <ul
@@ -388,6 +388,10 @@ export default {
   overflow: hidden;
 }
 
+.initial-section .text-left {
+  max-width: 65%;
+}
+
 .initial-section::before {
   content: "";
   position: absolute;
@@ -470,6 +474,10 @@ export default {
 
 .card-content h3 {
   color: #ffa000;
+}
+
+h1 {
+  font-size: 3.75rem;
 }
 
 .card-content p {
@@ -680,6 +688,11 @@ img {
   height: auto;
 }
 
+p {
+    font-size: 1.25rem;
+    line-height: 1.2;
+  }
+
 @media (max-width: 768px) {
   .content-container {
     top: 15%;
@@ -689,7 +702,7 @@ img {
   }
 
   h1 {
-    font-size: 1.5rem;
+    font-size: 2.5rem;
     line-height: 1.8rem;
   }
 
@@ -705,7 +718,7 @@ img {
 
   .text-primary {
     margin-right: 0;
-    font-size: 0.8rem;
+    font-size: 1.25rem;
     margin-left: 30;
   }
 

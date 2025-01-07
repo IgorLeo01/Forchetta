@@ -159,4 +159,34 @@ footer .footer-button:hover {
   margin-top: 10px;
   opacity: 0.8;
 }
+
+@media (max-width: 768px) {
+  .footer .container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .footer .flex {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer p {
+    font-size: 0.875rem; 
+  }
+
+  .footer .font-prompt.text-base {
+    font-size: 0.875rem; 
+    margin-bottom: 12px; 
+  }
+
+  .footer .font-prompt.text-sm {
+    font-size: 0.875rem; 
+  }
+
+  .footer .flex .gap-6 {
+    gap: 12px;
+  }
+}
 </style>

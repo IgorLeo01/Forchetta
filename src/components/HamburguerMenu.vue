@@ -3,47 +3,48 @@
     <button @click="closeMenu" class="close-button">
       ✕
     </button>
-    <a href="#">Inicio</a>
-    <a href="#">Sobre</a>
-    <a href="#">Cardápio</a>
-    <a href="#">Contato</a>
+    <router-link to="/" @click.native="closeMenu">Início</router-link>
+    <router-link to="/sobre" @click.native="closeMenu">Sobre</router-link>
+    <router-link to="/cardapio" @click.native="closeMenu">Cardápio</router-link>
+    <router-link to="/contato" @click.native="closeMenu">Contato</router-link>
   </div>
 </template>
 
-<script>
-export default {
-  name: "HamburguerMenu",
+<script lang="ts">
+import { defineComponent, PropType } from 'vue';
+
+export default defineComponent({
+  name: 'HamburguerMenu',
   props: {
     isMenuOpen: {
-      type: Boolean,
+      type: Boolean as PropType<boolean>,
       required: true,
     },
   },
   methods: {
     closeMenu() {
-      this.$emit("close-menu");
+      this.$emit('close-menu');
     },
   },
-};
+});
 </script>
 
-
-<style>
+<style scoped>
 .sidebar {
   position: fixed;
   top: 0;
-  right: 0; 
+  right: 0;
   width: 250px;
   height: 100%;
   background-color: #051114;
   z-index: 2000;
   padding: 20px;
-  transform: translateX(100%); 
+  transform: translateX(100%);
   transition: transform 0.3s ease-in-out;
 }
 
 .sidebar.open {
-  transform: translateX(0); /* Mostra o sidebar */
+  transform: translateX(0);
 }
 
 .sidebar a {
@@ -66,5 +67,4 @@ button {
   cursor: pointer;
   margin-bottom: 20px;
 }
-
 </style>

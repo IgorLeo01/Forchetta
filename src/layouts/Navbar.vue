@@ -13,11 +13,12 @@
           >Forchetta</span
         >
       </div>
-      <ul class="hidden md:flex gap-10 text-base">
+      <ul class="hidden md:flex gap-12 text-lg">
+        <!-- Aumentando o gap e a fonte -->
         <li>
           <a
             href="#"
-            class="hover:text-primary text-white"
+            class="hover:text-primary text-white font-prompt text-lg py-2 px-4 rounded-md transition-all"
             @click.prevent="navigate('home')"
           >
             Início
@@ -26,7 +27,7 @@
         <li>
           <a
             href="#"
-            class="hover:text-primary text-white"
+            class="hover:text-primary text-white font-prompt text-lg py-2 px-4 rounded-md transition-all"
             @click.prevent="navigate('sobre')"
           >
             Sobre
@@ -35,14 +36,19 @@
         <li>
           <a
             href="#"
-            class="hover:text-primary text-white"
+            class="hover:text-primary text-white font-prompt text-lg py-2 px-4 rounded-md transition-all"
             @click.prevent="navigate('menu')"
           >
             Cardápio
           </a>
         </li>
         <li>
-          <a href="#" class="hover:text-primary text-white"> Contato </a>
+          <a
+            href="#"
+            class="hover:text-primary text-white font-prompt text-lg py-2 px-4 rounded-md transition-all"
+          >
+            Contato
+          </a>
         </li>
       </ul>
       <a
