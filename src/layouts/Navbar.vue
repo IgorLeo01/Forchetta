@@ -63,7 +63,7 @@
       </button>
     </nav>
 
-    <HamburguerMenu :isMenuOpen="isMenuOpen" @close-menu="toggleMenu" />
+    <HamburguerMenu :isMenuOpen="isMenuOpen" @close-menu="toggleMenu" :navigate="navigate" />
   </div>
 </template>
 

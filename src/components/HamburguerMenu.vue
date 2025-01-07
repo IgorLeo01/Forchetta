@@ -3,10 +3,11 @@
     <button @click="closeMenu" class="close-button">
       ✕
     </button>
-    <router-link to="/" @click.native="closeMenu">Início</router-link>
-    <router-link to="/sobre" @click.native="closeMenu">Sobre</router-link>
-    <router-link to="/cardapio" @click.native="closeMenu">Cardápio</router-link>
-    <router-link to="/contato" @click.native="closeMenu">Contato</router-link>
+    <a href="#" @click.prevent="navigate('home')">Início</a>
+    <a href="#" @click.prevent="navigate('sobre')">Sobre</a>
+    <a href="#" @click.prevent="navigate('cardapio')">Cardápio</a>
+    <a href="#" @click.prevent="navigate('contato')">Contato</a>
+    <a href="#" @click.prevent="navigate('reservar')">Reservar</a>
   </div>
 </template>
 
@@ -18,6 +19,10 @@ export default defineComponent({
   props: {
     isMenuOpen: {
       type: Boolean as PropType<boolean>,
+      required: true,
+    },
+    navigate: {
+      type: Function as PropType<(page: string) => void>,
       required: true,
     },
   },
