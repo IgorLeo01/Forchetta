@@ -94,23 +94,31 @@ Para visualizar o build de produção
    http://localhost:5173
    ```
 ---
-##🌟 Funcionalidades
+###🌟 Funcionalidades
 Navegação Dinâmica: Navegue entre páginas como "Sobre Nós", "Menu" e "Reservar" utilizando Vue Router.
 Design Responsivo: A aplicação é completamente responsiva, criada com TailwindCSS.
 Animações e Transições: Animações fluídas para uma experiência de usuário mais rica.
 Gerenciamento de Estado Simples: Estado do carrossel e outros elementos controlados com Vue.
+
 ---
+
 ##✨ Estilização com TailwindCSS
 O TailwindCSS foi utilizado para estilização, permitindo um design moderno e responsivo com utilitários. O arquivo de configuração (tailwind.config.js) permite personalizações adicionais.
+
 ---
+
 ##📚 Estrutura de Rotas
 O Vue Router gerencia as seguintes rotas:
+
 ---
+
 /: Página inicial com carrossel de conteúdo e menu principal.
 /sobre: Página "Sobre Nós", detalhando o restaurante.
 /menu: Página para explorar o menu gastronômico.
 /reservar: Página para fazer reservas online.
+
 ---
+
 ##📞 Contato
 Se você tiver dúvidas ou sugestões, entre em contato pelo e-mail: leo01devps@gmail.com
----
+
