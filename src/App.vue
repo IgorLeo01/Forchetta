@@ -1,8 +1,4 @@
 <script setup lang="ts">
-import Home from "./views/Home.vue";
-import Menu from "./views/Menu.vue";
-import Sobre from "./views/Sobre.vue";
-import Reservar from "./views/Reservar.vue";
 import Navbar from "./layouts/Navbar.vue";
 import Footer from "./layouts/Footer.vue";
 import { ref, watch } from "vue";

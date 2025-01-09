@@ -33,10 +33,9 @@ const router = createRouter({
     routes,
     scrollBehavior(to, from, savedPosition) {
       if (savedPosition) {
-        return savedPosition; // Restaura a posição salva, se existir
+        return savedPosition; 
       }
   
-      // Se estivermos indo para uma nova página, garantimos que o scroll vá ao topo
       return { top: 0 };
     },
   });

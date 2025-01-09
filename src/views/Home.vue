@@ -47,7 +47,7 @@
               v-if="contentList[currentContentIndex].image"
               :src="contentList[currentContentIndex].image"
               alt="Conteúdo Visual"
-              class="rounded-lg shadow-lg max-w-full w-3/4 md:w-4/5"
+              class="rounded-lg shadow-lg max-w-full w-full sm:w-3/4 md:w-4/5 hide-mobile"
             />
           </div>
         </div>
@@ -91,8 +91,6 @@
           >
             <div class="card-content">
               <img :src="item.image" alt="Card Image" class="card-image" />
-              <h3 class="text-lg font-bold">{{ item.title }}</h3>
-              <p class="text-sm">{{ item.description }}</p>
             </div>
           </div>
         </div>
@@ -126,9 +124,12 @@
             Nossa Especialidade
           </h2>
           <p class="description">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
-            euismod posuere nisl, id tristique libero mattis et. Vivamus orci
-            risus, facilisis at felis non, luctus maximus justo. Orci varius
+            o Medaglioni Specialittà, um prato com medalhões de filé grelhados
+            cobertos com tomate, catupiry e molho especial à base de creme de
+            leite é uma das especialidades da casa, junto ao Spaghetti alla
+            Siracusa que traz toda a tradição e o sabor da Sicília , preparado
+            com espaguete al dente, tomates frescos, azeitonas, alcaparras e um
+            toque especial de pistaches.
           </p>
           <img
             :src="especialidade1"
@@ -161,28 +162,25 @@
           <img :src="aspasLeft" alt="Aspas Esquerda" class="w-10 h-10" />
           <div class="max-w-3xl">
             <p class="italic text-lg leading-relaxed">
-              "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
-              euismod posuere nisl, id tristique libero mattis et. Vivamus orci
-              risus, facilisis at felis non, luctus maximus justo."
+              {{ comments[currentCommentIndex].text }}
             </p>
-            <p class="mt-4 text-sm text-gray-400">— Nome do Crítico</p>
+            <p class="mt-4 text-sm text-gray-400">
+              {{ comments[currentCommentIndex].author }}
+            </p>
           </div>
           <img :src="aspasRight" alt="Aspas Direita" class="w-10 h-10" />
         </div>
-        <div class="flex mt-10 justify-center gap-6">
-          <button
-            class="btn-critica btn-critica-left"
-            @click="goToPreviousCritica"
-          >
-            <img :src="arrowCriticaLeft" alt="Seta Esquerda" />
-          </button>
-          <button
-            class="btn-critica btn-critica-right"
-            @click="goToNextCritica"
-          >
-            <img :src="arrowCriticaRight" alt="Seta Direita" />
-          </button>
-        </div>
+      </div>
+      <div class="flex mt-10 justify-center gap-6">
+        <button
+          class="btn-critica btn-critica-left"
+          @click="goToPreviousCritica"
+        >
+          <img :src="arrowCriticaLeft" alt="Seta Esquerda" />
+        </button>
+        <button class="btn-critica btn-critica-right" @click="goToNextCritica">
+          <img :src="arrowCriticaRight" alt="Seta Direita" />
+        </button>
       </div>
     </div>
   </div>
@@ -205,6 +203,14 @@ import reservar from "../assets/Reservar.png";
 import horario from "../assets/Horario.png";
 import especialidade1 from "../assets/SpaghettiAllaSiracusa.jpg";
 import especialidade2 from "../assets/Especialidade.jpg";
+import SpaghettiAllaCarbonara from "../assets/Spaghetti alla Carbonara.jpg";
+import RavioloniAllaNapolitana from "../assets/RavioloniAllaNapolitana.jpg";
+import GnocciBrachiolli from "../assets/GnocciBrachiolli.jpg";
+import LasagneVerde from "../assets/LasagneVerde.jpg";
+import FilettoPesceAllaMugnaia from "../assets/FilettoPesceAllaMugnaia.jpg";
+import CarpaccioDiPolpo from "../assets/CarpaccioDiPolpo.jpg";
+import Burrata from "../assets/Burrata.jpg";
+import Arancini from "../assets/Arancini.jpg";
 
 export default {
   name: "Home",
@@ -225,41 +231,34 @@ export default {
       horario,
       especialidade1,
       especialidade2,
+      SpaghettiAllaCarbonara,
       currentIndex: 2,
       currentContentIndex: 0,
       autoSlideInterval: null,
       carouselItems: [
         {
-          image: "path/to/image1.jpg",
-          title: "Prato 1",
+          image: SpaghettiAllaCarbonara,
         },
         {
-          image: "path/to/image2.jpg",
-          title: "Prato 2",
+          image: RavioloniAllaNapolitana,
         },
         {
-          image: "path/to/image3.jpg",
-          title: "Prato 3",
+          image: GnocciBrachiolli,
         },
         {
-          image: "path/to/image4.jpg",
-          title: "Prato 4",
+          image: LasagneVerde,
         },
         {
-          image: "path/to/image3.jpg",
-          title: "Prato 3",
+          image: FilettoPesceAllaMugnaia,
         },
         {
-          image: "path/to/image4.jpg",
-          title: "Prato 4",
+          image: CarpaccioDiPolpo,
         },
         {
-          image: "path/to/image3.jpg",
-          title: "Prato 3",
+          image: Burrata,
         },
         {
-          image: "path/to/image4.jpg",
-          title: "Prato 4",
+          image: Arancini,
         },
       ],
       contentList: [
@@ -291,6 +290,21 @@ export default {
           ],
         },
       ],
+      comments: [
+        {
+          text: "Forchetta traz pratos com influência italiana e referências às culinárias: francesa, portuguesa, com toques de brasilidade e muitas frutas, um menu que resulta em uma gastronomia de sabor único, surpreendente e, ao mesmo tempo, clássica.",
+          author: "— Info:mente / 2023",
+        },
+        {
+          text: "A culinária italiana com toque brasileiro! Experiência única que mistura o melhor dos dois mundos.",
+          author: "— GoWhere / 2024",
+        },
+        {
+          text: " É sempre agradável comer aqui por causa do serviço espetacular, da gastronomia de alta qualidade e o ambiente muito aconchegante",
+          author: "— RestaurantGuru / 2024",
+        },
+      ],
+      currentCommentIndex: 0,
     };
   },
   methods: {
@@ -321,10 +335,13 @@ export default {
       };
     },
     goToPreviousCritica() {
-      console.log("Botão crítica anterior clicado");
+      this.currentCommentIndex =
+        (this.currentCommentIndex - 1 + this.comments.length) %
+        this.comments.length;
     },
     goToNextCritica() {
-      console.log("Botão crítica próximo clicado");
+      this.currentCommentIndex =
+        (this.currentCommentIndex + 1) % this.comments.length;
     },
     goToPrevious() {
       this.currentContentIndex =
@@ -462,7 +479,7 @@ export default {
 
 .card-image {
   width: 100%;
-  height: 150px;
+  height: 310px;
   object-fit: cover;
   border-radius: 10px;
   margin-bottom: 10px;
@@ -535,7 +552,7 @@ h1 {
 
 .description {
   font-family: "Prompt", sans-serif;
-  font-size: 16px;
+  font-size: 18px;
   line-height: 24px;
   color: #c8c8c8;
   margin-bottom: 20px;
@@ -685,9 +702,9 @@ img {
 }
 
 p {
-    font-size: 1.25rem;
-    line-height: 1.2;
-  }
+  font-size: 1.25rem;
+  line-height: 1.2;
+}
 
 @media (max-width: 768px) {
   .content-container {
@@ -871,6 +888,29 @@ p {
   .slide-horizontal-leave-to {
     transform: translateX(-100%);
     opacity: 0;
+  }
+
+  @media (max-width: 768px) {
+    .hide-mobile {
+      display: none !important;
+    }
+
+    .content-container {
+      top: 15%;
+      left: 50%;
+      transform: translate(-50%, 0);
+      padding: 10px;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      line-height: 1.8rem;
+    }
+
+    p {
+      font-size: 0.75rem;
+      line-height: 1.2;
+    }
   }
 }
 </style>
