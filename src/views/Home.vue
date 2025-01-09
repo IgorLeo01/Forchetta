@@ -38,6 +38,17 @@
             </ul>
             <button
               class="btn-primary mt-6 px-6 py-3 bg-primary text-secondary text-sm font-prompt rounded"
+              @click="
+                $router.push({
+                  name:
+                    contentList[currentContentIndex].buttonText === 'Sobre Nós'
+                      ? 'sobre'
+                      : contentList[currentContentIndex].buttonText ===
+                        'Descubra o Cardápio'
+                      ? 'menu'
+                      : 'reservar',
+                })
+              "
             >
               <span>{{ contentList[currentContentIndex].buttonText }}</span>
             </button>
@@ -170,17 +181,20 @@
           </div>
           <img :src="aspasRight" alt="Aspas Direita" class="w-10 h-10" />
         </div>
-      </div>
-      <div class="flex mt-10 justify-center gap-6">
-        <button
-          class="btn-critica btn-critica-left"
-          @click="goToPreviousCritica"
-        >
-          <img :src="arrowCriticaLeft" alt="Seta Esquerda" />
-        </button>
-        <button class="btn-critica btn-critica-right" @click="goToNextCritica">
-          <img :src="arrowCriticaRight" alt="Seta Direita" />
-        </button>
+        <div class="flex mt-10 justify-center gap-6">
+          <button
+            class="btn-critica btn-critica-left"
+            @click="goToPreviousCritica"
+          >
+            <img :src="arrowCriticaLeft" alt="Seta Esquerda" />
+          </button>
+          <button
+            class="btn-critica btn-critica-right"
+            @click="goToNextCritica"
+          >
+            <img :src="arrowCriticaRight" alt="Seta Direita" />
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -266,14 +280,14 @@ export default {
           title: "Clássico Restaurante",
           subtitle: "Italiano",
           description:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce euismod posuere nisl, id tristique libero mattis et. Vivamus orci risus...",
+            "No coração da cidade, oferecemos uma experiência gastronômica única, com pratos tradicionais italianos feitos com os melhores ingredientes. Do nosso famoso risoto de cogumelos ao tiramisù caseiro, você encontrará sabores autênticos e acolhedores que vão te transportar diretamente para a Itália.",
           buttonText: "Sobre Nós",
         },
         {
           title: "Experiência Gastronômica",
           subtitle: "Requintada",
           description:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce euismod posuere nisl, id tristique libero mattis et. Vivamus orci risus, facilisis at felis non, luctus maximus justo...",
+            "Em nosso restaurante, a experiência vai além do prato. Cada refeição é uma viagem sensorial, com pratos elaborados por chefs premiados, ingredientes de primeira linha e uma apresentação impecável. Se você busca uma refeição memorável para ocasiões especiais ou simplesmente um jantar sofisticado, aqui é o lugar perfeito.",
           buttonText: "Descubra o Cardápio",
           image: carbonara,
         },
@@ -281,7 +295,7 @@ export default {
           title: "Horário de Funcionamento",
           subtitle: "",
           description:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce euismod posuere nisl, id tristique libero mattis et. Vivamus orci risus, facilisis at felis non, luctus maximus justo. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aliquam vitae ex felis. Donec ac diam in sem convallis facilisis non et neque. Vivamus a lacus pulvinar turpis maximus rutrum ut ac purus. Donec.",
+            "Nossa cozinha está pronta para te receber com o melhor da gastronomia em horários que atendem a todas as suas necessidades. Se você busca um almoço rápido durante a semana ou um jantar descontraído no fim de semana, temos o horário perfeito para você. Além disso, nossa equipe está sempre à disposição para garantir que sua experiência seja inesquecível.",
           buttonText: "Reservar",
           image: horario,
           schedule: [
@@ -378,6 +392,15 @@ export default {
     console.log("Índice recebido:", index);
     console.log("Imagem retornada:", images[index]);
     return images[index] || "";
+  },
+  navigateToPage: (buttonText) => {
+    if (buttonText === "Sobre Nós") {
+      this.$router.push({ name: "sobre" });
+    } else if (buttonText === "Descubra o Cardápio") {
+      this.$router.push({ name: "menu" });
+    } else if (buttonText === "Reservar") {
+      this.$router.push({ name: "reservar" });
+    }
   },
 };
 </script>
