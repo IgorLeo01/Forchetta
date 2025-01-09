@@ -1,6 +1,6 @@
 # Forchetta
 
-Forchetta é um projeto desenvolvido para um reastaurente italiano com Vue 3 e TailwindCSS, que oferece uma experiência web sofisticada para explorar um menu italiano, realizar reservas e descobrir mais sobre o restaurante. Este projeto utiliza o Vite para construção e desenvolvimento, Vue Router para navegação e TypeScript para maior robustez.
+Forchetta é um projeto desenvolvido para um restaurante italiano com Vue 3 e TailwindCSS, que oferece uma experiência web sofisticada para explorar um menu italiano, realizar reservas e descobrir mais sobre o restaurante. Este projeto utiliza o Vite para construção e desenvolvimento, Vue Router para navegação e TypeScript para maior robustez e tipagem.
 
 ---
 
